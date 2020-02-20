@@ -1,6 +1,5 @@
 package org.hzz.excel;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -24,6 +23,10 @@ public class Main {
                 row.createCell(0).setCellValue(users.get(i).getId());
                 row.createCell(1).setCellValue(users.get(i).getName());
                 row.createCell(2).setCellValue(users.get(i).getPhone());
+
+                // 设置列宽高自适应
+                sheet.autoSizeColumn(1);
+                sheet.autoSizeColumn(2);
             }
            try(FileOutputStream fileOut = new FileOutputStream(FILE_NAME)){
                wb.write(fileOut);
